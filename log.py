@@ -2,9 +2,10 @@ import os
 import time
 
 os.system('title Work Log')
-target = '../log.txt'
+target = 'log.txt'
 
 while True:
+	entry = raw_input("New Log Entry: ")
 	os.system('cls')
 	
 	with open(target, 'r+') as f:
@@ -18,6 +19,8 @@ while True:
 	entrytime = time.strftime("%a %d %b %Y %H:%M", time.localtime())
 
 	with open(target, 'a') as f:
+		if initial[-1][:3] != entrytime[:3]:
+			f.write('\n')
 		f.write('\n')
 		f.write(entrytime)
 		f.write('\t')
